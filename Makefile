@@ -16,7 +16,7 @@
 # get overridden by architecture-specific builds)
 CC = gcc -D_FILE_OFFSET_BITS=64
 WARN_FLAGS = -Wall -W
-OPT_FLAGS = -O3 -fomit-frame-pointer -march=athlon-xp -DNDEBUG
+OPT_FLAGS = -O3 -fomit-frame-pointer -march=native -DNDEBUG
 #OPT_FLAGS = -O3 -fomit-frame-pointer -march=k8 -DNDEBUG
 
 CFLAGS = $(OPT_FLAGS) $(MACHINE_FLAGS) $(WARN_FLAGS) \
@@ -340,7 +340,7 @@ mpqs/sieve_core_k7_64k.qo: mpqs/sieve_core.c $(COMMON_HDR) $(QS_HDR)
 		-c -o $@ mpqs/sieve_core.c
 
 mpqs/sieve_core_k7xp_64k.qo: mpqs/sieve_core.c $(COMMON_HDR) $(QS_HDR)
-	$(CC) $(CFLAGS) -march=athlon-xp -DBLOCK_KB=64 -DCPU_ATHLON_XP \
+	$(CC) $(CFLAGS) -march=native -DBLOCK_KB=64 -DCPU_ATHLON_XP \
 		-DROUTINE_NAME=qs_core_sieve_k7xp_64k \
 		-c -o $@ mpqs/sieve_core.c
 
